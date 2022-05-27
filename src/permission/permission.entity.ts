@@ -1,10 +1,9 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, ManyToOne } from 'typeorm';
+import { ModelEntity } from '../common/model.entity';
+import { Role } from '../role/role.entity';
 
 @Entity()
-export class Permission {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class Permission extends ModelEntity {
   @Column()
   scope: string;
 }
