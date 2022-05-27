@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { User } from './user/user.entity';
+import { PermissionModule } from './permission/permission.module';
+import { Permission } from './permission/permission.entity';
 
 @Module({
   imports: [
@@ -14,10 +16,11 @@ import { User } from './user/user.entity';
       username: 'root',
       password: 'P@ssw0rd1234',
       database: 'acme',
-      entities: [User],
+      entities: [User, Permission],
       synchronize: true,
     }),
     UserModule,
+    PermissionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
