@@ -1,9 +1,12 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
-import { RoleRepository } from './role.repository';
+import { Body, Controller, Get, Inject, Post } from '@nestjs/common';
+import { IRoleRepository, RoleRepository } from './role.repository';
 
 @Controller('roles')
 export class RoleController {
-  constructor(private readonly roleRepository: RoleRepository) {}
+  constructor(
+    @Inject(RoleRepository)
+    private readonly roleRepository: IRoleRepository,
+  ) {}
 
   @Get()
   async listRole() {
