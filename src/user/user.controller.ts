@@ -6,7 +6,10 @@ export class UserController {
   constructor(private readonly userRepository: UserRepository) {}
 
   @Get(':id')
-  async getById(@Param('id') id: number) {
+  async getById(
+    @Param('id')
+    id: number,
+  ) {
     const user = await this.userRepository.getById(id);
     return { user };
   }

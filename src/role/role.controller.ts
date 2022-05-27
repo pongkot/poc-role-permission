@@ -15,7 +15,13 @@ export class RoleController {
   }
 
   @Post()
-  async createRole(@Body() data: { title: string; scopes: Array<string> }) {
+  async createRole(
+    @Body()
+    data: {
+      title: string;
+      scopes: Array<string>;
+    },
+  ) {
     const { title, scopes } = data;
     return this.roleRepository.createNewRole(title, scopes);
   }
